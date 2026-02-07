@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin – Articles{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Gestion des articles</h1>
+        <p class="lead mt-3">
+            Consulte, modifie ou supprime les articles publiés sur OnlyBangers.
+        </p>
+    </section>
+
+    <div class="container">
+
+        {% if articles is empty %}
+            <div class="alert alert-info text-center">
+                Aucun article pour le moment.
+            </div>
+        {% else %}
+
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Date</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td class="fw-bold">{{ article.title }}</td>
+
+                                <td>
+                                    {% if article.author %}
+                                        {{ article.author.username }}
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+
+                                <td>{{ article.createdAt|date('d/m/Y H:i') }}</td>
+
+                                <td class="text-end">
+
+                                    <a href="{{ path('admin_articles_edit', {id: article.id}) }}"
+                                       class="btn btn-sm btn-secondary">
+                                        Éditer
+                                    </a>
+
+                                    <form method="post"
+                                          action="{{ path('admin_articles_delete', {id: article.id}) }}"
+                                          style="display:inline;"
+                                          onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?');">
+
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('delete' ~ article.id) }}">
+
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            Supprimer
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{{ path('admin_articles_new') }}" class="btn btn-secondary btn-lg">
+                ➕ Créer un nouvel article
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

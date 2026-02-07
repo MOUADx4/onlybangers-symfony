@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin – Commentaires{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Modération des commentaires</h1>
+        <p class="lead mt-3">
+            Consulte et supprime les commentaires publiés sur OnlyBangers.
+        </p>
+    </section>
+
+    <div class="container">
+
+        {% if comments is empty %}
+            <div class="alert alert-info text-center">
+                Aucun commentaire pour le moment.
+            </div>
+        {% else %}
+
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Article</th>
+                            <th>Auteur</th>
+                            <th>Contenu</th>
+                            <th>Date</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td class="fw-bold">{{ comment.article.title }}</td>
+
+                                <td>
+                                    {% if comment.author %}
+                                        {{ comment.author.username }}
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+
+                                <td style="max-width: 300px;">
+                                    {{ comment.content }}
+                                </td>
+
+                                <td>{{ comment.createdAt|date('d/m/Y H:i') }}</td>
+
+                                <td class="text-end">
+
+                                    <form method="post"
+                                          action="{{ path('admin_comments_delete', {id: comment.id}) }}"
+                                          style="display:inline;"
+                                          onsubmit="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');">
+
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('delete' ~ comment.id) }}">
+
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            Supprimer
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

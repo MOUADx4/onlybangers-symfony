@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les Articles - OnlyBangers{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Tous les Articles</h1>
+        <p class="lead mt-3">
+            Explore l’ensemble de nos contenus : nouveautés, analyses, classiques du rap US.
+        </p>
+    </section>
+
+    {# 🔥 Grille des articles #}
+    <h2 class="mb-4 text-center fw-bold">📰 Tous nos articles</h2>
+
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+
+                    <img
+                        src="{{ asset(article.image ? 'uploads/articles/' ~ article.image : 'images/article-default.jpg') }}"
+                        class="card-img-top rounded-top"
+                        alt="{{ article.title }}"
+                        style="height: 180px; object-fit: cover;"
+                    >
+
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ article.title }}</h5>
+
+                        <p class="card-text text-muted text-truncate">
+                            {{ article.content|slice(0, 100) ~ '...' }}
+                        </p>
+
+                        <a href="{{ path('article_show', {'id': article.id}) }}"
+                           class="btn btn-outline-secondary btn-sm">
+                            Lire l'article
+                        </a>
+                    </div>
+
+                    <div class="card-footer small text-muted">
+                        Publié le {{ article.createdAt|date('d/m/Y') }}
+                        {% if article.author %}
+                            • par {{ article.author.username }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Aucun article disponible pour le moment.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if form.vars.value.id %}
+        Modifier l'article
+    {% else %}
+        Nouvel article
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">
+            {% if form.vars.value.id %}
+                Modifier l'article
+            {% else %}
+                Nouvel article
+            {% endif %}
+        </h1>
+        <p class="lead mt-3">
+            Rédige ou mets à jour un article pour OnlyBangers.
+        </p>
+    </section>
+
+    <div class="container">
+
+        {# Messages flash succès #}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="card shadow-sm border-0 p-4 mb-5">
+            {{ form_start(form) }}
+
+                <div class="mb-3">
+                    {{ form_label(form.title, null, {'label_attr': {'class': 'fw-bold'}}) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.title) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.content, null, {'label_attr': {'class': 'fw-bold'}}) }}
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control', 'rows': 8}}) }}
+                    {{ form_errors(form.content) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.image, null, {'label_attr': {'class': 'fw-bold'}}) }}
+                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.image) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg mt-3">
+                    {% if form.vars.value.id %}
+                        Mettre à jour
+                    {% else %}
+                        Publier
+                    {% endif %}
+                </button>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="text-center">
+            <a href="{{ path('admin_articles_list') }}" class="btn btn-outline-secondary">
+                ← Retour à la liste des articles
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

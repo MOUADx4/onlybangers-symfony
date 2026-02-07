@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord Admin{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Tableau de bord Admin</h1>
+        <p class="lead mt-3">
+            Gérez facilement les articles, les utilisateurs et le contenu du site.
+        </p>
+    </section>
+
+    {# 🔥 Section des actions admin #}
+    <div class="container text-center">
+
+        <h2 class="fw-bold mb-4">Actions rapides</h2>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-4 mb-4">
+                <a href="{{ path('admin_articles_list') }}" class="text-decoration-none">
+                    <div class="card shadow-sm border-0 h-100 hover-card">
+                        <div class="card-body">
+                            <h4 class="fw-bold mb-3">📝 Gérer les articles</h4>
+                            <p class="text-muted">
+                                Modifier, supprimer ou ajouter de nouveaux articles.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div><br><br><br>
+    </div>
+
+    <style>
+        .hover-card {
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+    </style>
+
+{% endblock %}

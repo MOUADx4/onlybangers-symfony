@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Créer un compte</h1>
+        <p class="lead mt-3">
+            Rejoins la communauté OnlyBangers et accède à toutes les fonctionnalités.
+        </p>
+    </section>
+
+    <div class="container d-flex justify-content-center">
+
+        <div class="card shadow-sm border-0 p-4" style="max-width: 500px; width: 100%;">
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ flash_error }}
+                </div>
+            {% endfor %}
+
+            <h2 class="text-center mb-4 fw-bold">Inscription</h2>
+
+            {{ form_start(registrationForm) }}
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'fw-bold'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'fw-bold'}}) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </div>
+
+                <button type="submit" class="btn btn-secondary btn-lg w-100 mt-3">
+                    S'inscrire
+                </button>
+
+            {{ form_end(registrationForm) }}
+
+            {# 🔵 Lien vers la connexion #}
+            <div class="text-center mt-4">
+                <p class="text-muted">
+                    Vous avez déjà un compte ?
+                <a href="{{ path('app_login') }}" class="text-secondary text-decoration-none fw-bold">
+                    Connectez‑vous
+                </a>
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

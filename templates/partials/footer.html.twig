@@ -1,0 +1,28 @@
+<footer class="mt-5 py-4 bg-dark text-center text-secondary">
+
+    <h5 class="fw-bold text-white mb-3">OnlyBangers</h5>
+
+    <p class="mb-2">
+        Les classiques du rap US, les nouveautés et les analyses qui font vibrer la culture.
+    </p>
+
+    <div class="mb-3">
+        <a href="{{ path('articles_view') }}" class="text-secondary text-decoration-none mx-2">
+            Articles
+        </a>
+        <span class="text-secondary">•</span>
+        <a href="{{ path('app_login') }}" class="text-secondary text-decoration-none mx-2">
+            Connexion
+        </a>
+        <span class="text-secondary">•</span>
+        <a href="{{ path('app_register') }}" class="text-secondary text-decoration-none mx-2">
+            Inscription
+        </a>
+    </div>
+
+    <p class="small text-muted mb-0">
+        © {{ "now"|date("Y") }} OnlyBangers — Tous droits réservés.
+    </p>
+
+</footer>
+

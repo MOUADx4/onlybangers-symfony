@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }} - OnlyBangers{% endblock %}
+
+{% block body %}
+<article class="mb-5">
+
+    <h1 class="mb-2">{{ article.title }}</h1>
+
+    <p class="text-muted">
+        Posté par <strong>{{ article.author.username }}</strong>
+        le {{ article.createdAt|date('d/m/Y H:i') }}
+    </p>
+
+    {# 🔥 Image affichée entièrement #}
+    <img 
+        src="{{ asset('uploads/articles/' ~ article.image) }}" 
+        alt="{{ article.title }}" 
+        class="img-fluid mb-4"
+        style="max-height: 400px; object-fit: contain; width: 100%;"
+    >
+
+
+    <hr>
+
+    <div class="mb-4">
+        {{ article.content|nl2br }}
+    </div>
+
+    <h4 class="mt-5">Commentaires</h4>
+
+    {% if latestComments is empty %}
+        <p class="text-muted">Aucun commentaire pour le moment.</p>
+    {% else %}
+        {% for comment in latestComments %}
+            <div class="border rounded p-3 mb-3">
+                <div class="fw-bold">
+                    {{ comment.author.username }}
+                    <span class="text-muted fw-normal ms-2">
+                        {{ comment.createdAt|date('d/m/Y H:i') }}
+                    </span>
+                </div>
+
+                <div class="mt-1">
+                    {{ comment.content|nl2br }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if app.user %}
+        <h4 class="mt-4">Ajouter un commentaire</h4>
+
+        {{ form_start(comment_form) }}
+            {{ form_errors(comment_form) }}
+            {{ form_row(comment_form.content) }}
+            <button class="btn btn-secondary mt-2">
+                Envoyer
+            </button>
+        {{ form_end(comment_form) }}
+    {% else %}
+        <p class="text-muted mt-4">
+            Vous devez être connecté pour poster un commentaire.
+        </p>
+        <a href="{{ path('app_login') }}" class="btn btn-secondary">
+            Se connecter
+        </a>
+    {% endif %}
+
+    {# 🔥 Lien gris vers la liste des articles #}
+    <a href="{{ path('article_list') }}" class="text-secondary text-decoration-none fw-bold mt-4 d-inline-block">
+        ← Retour à la liste des articles
+    </a>
+
+</article>
+{% endblock %}

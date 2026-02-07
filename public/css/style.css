@@ -1,0 +1,25 @@
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff4d4f;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: none;
+}
+
+.card .card-title {
+    color: #ff4d4f;
+}
+
+.card .card-text {
+    color: #ddd;
+}
