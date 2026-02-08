@@ -34,6 +34,14 @@ class CommentRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function qbByArticle(Article $article)
+{
+    return $this->createQueryBuilder('c')
+        ->andWhere('c.article = :article')
+        ->setParameter('article', $article)
+        ->orderBy('c.createdAt', 'DESC');
+}
+
 
     // Méthodes générées par défaut (commentées)
     // /**

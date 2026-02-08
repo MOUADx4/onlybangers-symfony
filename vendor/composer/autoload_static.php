@@ -135,6 +135,11 @@ class ComposerStaticInit75e7f8d848176580e9902a32f6f14640
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
         ),
+        'K' =>
+        array (
+            'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
+        ),
         'F' =>
         array (
             'Faker\\' => 6,
@@ -528,6 +533,14 @@ class ComposerStaticInit75e7f8d848176580e9902a32f6f14640
         'Masterminds\\' =>
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Knp\\Component\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
         ),
         'Faker\\' =>
         array (
