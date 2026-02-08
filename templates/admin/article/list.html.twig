@@ -4,7 +4,6 @@
 
 {% block body %}
 
-    {# 🔥 Hero Section #}
     <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
         <h1 class="display-4 fw-bold">Gestion des articles</h1>
         <p class="lead mt-3">
@@ -12,7 +11,7 @@
         </p>
     </section>
 
-    <div class="container">
+    <div class="mt-4"> {# ← CHANGÉ ICI #}
 
         {% if articles is empty %}
             <div class="alert alert-info text-center">
@@ -61,7 +60,7 @@
                                         <input type="hidden" name="_token"
                                                value="{{ csrf_token('delete' ~ article.id) }}">
 
-                                        <button class="btn btn-sm btn-outline-secondary">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary">
                                             Supprimer
                                         </button>
                                     </form>

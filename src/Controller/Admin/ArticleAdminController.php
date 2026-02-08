@@ -98,13 +98,20 @@ class ArticleAdminController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'delete', methods: ['POST'])]
-    public function delete(Article $article, ManagerRegistry $doctrine): Response
+    public function delete(Article $article, Request $request, ManagerRegistry $doctrine): Response
     {
-        $em = $doctrine->getManager();
-        $em->remove($article);
-        $em->flush();
+        // Vérification CSRF
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
 
-        $this->addFlash('success', 'Article supprimé !');
+            $em = $doctrine->getManager();
+            $em->remove($article);
+            $em->flush();
+
+            $this->addFlash('success', 'Article supprimé !');
+
+        } else {
+            $this->addFlash('danger', 'Token CSRF invalide.');
+        }
 
         return $this->redirectToRoute('admin_articles_list');
     }

@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerLs532XK\App_KernelDevDebugContainer([
     'container.build_hash' => 'Ls532XK',
-    'container.build_id' => '3fd4b28d',
-    'container.build_time' => 1770592051,
+    'container.build_id' => 'ff6c04c8',
+    'container.build_time' => 1770594478,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerLs532XK');
