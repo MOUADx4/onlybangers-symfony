@@ -11,9 +11,20 @@
         Posté par <strong>{{ article.author.username }}</strong>
         le {{ article.createdAt|date('d/m/Y H:i') }}
     </p>
+    <a href="{{ path('article_favorite', {id: article.id}) }}"
+        class="fs-3 text-decoration-none"
+        style="cursor:pointer;">
+        {% if app.user and article in app.user.favorites %}
+            <span style="color:red;">❤️</span>
+        {% else %}
+            <span style="color:grey;">🤍</span>
+        {% endif %}
+    </a>
 
     <hr>
     {% if article.image %}
+
+
     <img 
         src="{{ asset('uploads/articles/' ~ article.image) }}" 
         alt="{{ article.title }}" 

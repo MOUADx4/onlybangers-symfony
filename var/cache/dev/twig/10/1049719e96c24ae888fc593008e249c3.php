@@ -109,88 +109,78 @@ class __TwigTemplate_2c6ec5bfe422601c5bba950825e860cd extends Template
 
     ";
         // line 16
-        yield "    <h2 class=\"mb-4 text-center fw-bold\">📰 Tous nos articles</h2>
+        yield "    <section class=\"section-bordered mb-5\">
+        <h2 class=\"mb-4 text-center fw-bold\">📰 Tous nos articles</h2>
 
-    <div class=\"row\">
-        ";
-        // line 19
+        <div class=\"row\">
+            ";
+        // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 20, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
-            // line 20
-            yield "            <div class=\"col-md-3 mb-4\">
-                <div class=\"card h-100 shadow-sm border-0\">
+            // line 21
+            yield "                <div class=\"col-md-3 mb-4\">
+                    <div class=\"card h-100 shadow-sm bg-dark text-white border-0\">
 
-                    <img
-                        src=\"";
-            // line 24
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl((((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["article"], "image", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (("uploads/articles/" . CoreExtension::getAttribute($this->env, $this->source, $context["article"], "image", [], "any", false, false, false, 24))) : ("images/article-default.jpg"))), "html", null, true);
+                        <img
+                            src=\"";
+            // line 25
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl((((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["article"], "image", [], "any", false, false, false, 25)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? (("uploads/articles/" . CoreExtension::getAttribute($this->env, $this->source, $context["article"], "image", [], "any", false, false, false, 25))) : ("images/article-default.jpg"))), "html", null, true);
             yield "\"
-                        class=\"card-img-top rounded-top\"
-                        alt=\"";
-            // line 26
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "title", [], "any", false, false, false, 26), "html", null, true);
+                            class=\"card-img-top rounded-top\"
+                            alt=\"";
+            // line 27
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "title", [], "any", false, false, false, 27), "html", null, true);
             yield "\"
-                        style=\"height: 180px; object-fit: cover;\"
-                    >
+                            style=\"height: 180px; object-fit: cover;\"
+                        >
 
-                    <div class=\"card-body\">
-                        <h5 class=\"card-title fw-bold\">";
-            // line 31
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "title", [], "any", false, false, false, 31), "html", null, true);
-            yield "</h5>
-
-                        <p class=\"card-text text-muted text-truncate\">
-                            ";
-            // line 34
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["article"], "content", [], "any", false, false, false, 34), 0, 100) . "..."), "html", null, true);
+                        <div class=\"card-body text-center\">
+                            <h5 class=\"card-title fw-bold text-white\">
+                                ";
+            // line 33
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "title", [], "any", false, false, false, 33), "html", null, true);
             yield "
-                        </p>
+                            </h5>
 
-                        <a href=\"";
-            // line 37
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("article_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+                            <a href=\"";
+            // line 36
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("article_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 36)]), "html", null, true);
             yield "\"
-                           class=\"btn btn-outline-secondary btn-sm\">
-                            Lire l'article
-                        </a>
+                               class=\"btn btn-outline-light btn-sm mt-2\">
+                                Lire l'article
+                            </a>
+                        </div>
+
                     </div>
-
-                    <div class=\"card-footer small text-muted\">
-                        Publié le ";
-            // line 44
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "createdAt", [], "any", false, false, false, 44), "d/m/Y"), "html", null, true);
-            yield "
-                        ";
-            // line 45
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["article"], "author", [], "any", false, false, false, 45)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 46
-                yield "                            • par ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["article"], "author", [], "any", false, false, false, 46), "username", [], "any", false, false, false, 46), "html", null, true);
-                yield "
-                        ";
-            }
-            // line 48
-            yield "                    </div>
                 </div>
-            </div>
-        ";
+            ";
             $context['_iterated'] = true;
         }
-        // line 51
+        // line 44
         if (!$context['_iterated']) {
-            // line 52
-            yield "            <div class=\"col-12 text-center\">
-                <p class=\"text-muted\">Aucun article disponible pour le moment.</p>
-            </div>
-        ";
+            // line 45
+            yield "                <div class=\"col-12 text-center\">
+                    <p class=\"text-muted\">Aucun article disponible pour le moment.</p>
+                </div>
+            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['article'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 56
-        yield "    </div>
+        // line 49
+        yield "        </div>
+    </section>
+
+    <style>
+        .section-bordered {
+            border: 3px solid #000;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
 
 ";
         
@@ -223,7 +213,7 @@ class __TwigTemplate_2c6ec5bfe422601c5bba950825e860cd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  193 => 56,  184 => 52,  182 => 51,  175 => 48,  169 => 46,  167 => 45,  163 => 44,  153 => 37,  147 => 34,  141 => 31,  133 => 26,  128 => 24,  122 => 20,  117 => 19,  112 => 16,  103 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  173 => 49,  164 => 45,  162 => 44,  149 => 36,  143 => 33,  134 => 27,  129 => 25,  123 => 21,  118 => 20,  112 => 16,  103 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -242,48 +232,51 @@ class __TwigTemplate_2c6ec5bfe422601c5bba950825e860cd extends Template
         </p>
     </section>
 
-    {# 🔥 Grille des articles #}
-    <h2 class=\"mb-4 text-center fw-bold\">📰 Tous nos articles</h2>
+    {# 🔥 Grille des articles (AVEC BORDURE NOIRE) #}
+    <section class=\"section-bordered mb-5\">
+        <h2 class=\"mb-4 text-center fw-bold\">📰 Tous nos articles</h2>
 
-    <div class=\"row\">
-        {% for article in articles %}
-            <div class=\"col-md-3 mb-4\">
-                <div class=\"card h-100 shadow-sm border-0\">
+        <div class=\"row\">
+            {% for article in articles %}
+                <div class=\"col-md-3 mb-4\">
+                    <div class=\"card h-100 shadow-sm bg-dark text-white border-0\">
 
-                    <img
-                        src=\"{{ asset(article.image ? 'uploads/articles/' ~ article.image : 'images/article-default.jpg') }}\"
-                        class=\"card-img-top rounded-top\"
-                        alt=\"{{ article.title }}\"
-                        style=\"height: 180px; object-fit: cover;\"
-                    >
+                        <img
+                            src=\"{{ asset(article.image ? 'uploads/articles/' ~ article.image : 'images/article-default.jpg') }}\"
+                            class=\"card-img-top rounded-top\"
+                            alt=\"{{ article.title }}\"
+                            style=\"height: 180px; object-fit: cover;\"
+                        >
 
-                    <div class=\"card-body\">
-                        <h5 class=\"card-title fw-bold\">{{ article.title }}</h5>
+                        <div class=\"card-body text-center\">
+                            <h5 class=\"card-title fw-bold text-white\">
+                                {{ article.title }}
+                            </h5>
 
-                        <p class=\"card-text text-muted text-truncate\">
-                            {{ article.content|slice(0, 100) ~ '...' }}
-                        </p>
+                            <a href=\"{{ path('article_show', {'id': article.id}) }}\"
+                               class=\"btn btn-outline-light btn-sm mt-2\">
+                                Lire l'article
+                            </a>
+                        </div>
 
-                        <a href=\"{{ path('article_show', {'id': article.id}) }}\"
-                           class=\"btn btn-outline-secondary btn-sm\">
-                            Lire l'article
-                        </a>
-                    </div>
-
-                    <div class=\"card-footer small text-muted\">
-                        Publié le {{ article.createdAt|date('d/m/Y') }}
-                        {% if article.author %}
-                            • par {{ article.author.username }}
-                        {% endif %}
                     </div>
                 </div>
-            </div>
-        {% else %}
-            <div class=\"col-12 text-center\">
-                <p class=\"text-muted\">Aucun article disponible pour le moment.</p>
-            </div>
-        {% endfor %}
-    </div>
+            {% else %}
+                <div class=\"col-12 text-center\">
+                    <p class=\"text-muted\">Aucun article disponible pour le moment.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <style>
+        .section-bordered {
+            border: 3px solid #000;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
 
 {% endblock %}
 ", "articles_view/index.html.twig", "/Users/mouad/Documents/OnlyBangers/onlybangers-symfony/templates/articles_view/index.html.twig");

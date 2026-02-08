@@ -5,7 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {# Favicon avec ton logo.png #}
-        <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('images/main_logo.png') }}">
 
         {% block stylesheets %}
         <!-- Bootstrap CSS -->
@@ -41,3 +41,28 @@
         {% endblock %}
     </body>
 </html>
+<style>
+.nav-link {
+    color: #bbb !important;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+
+.nav-link.active.btn-nav {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+</style>

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Favoris - OnlyBangers{% endblock %}
+
+{% block body %}
+
+    {# 🔥 Hero Section (même style que Tous les Articles) #}
+    <section class="py-5 text-center bg-dark text-white rounded shadow-sm mb-5">
+        <h1 class="display-4 fw-bold">Mes Favoris</h1>
+        <p class="lead mt-3">
+            Retrouvez ici tous les articles que vous avez ajoutés en favoris.
+        </p>
+    </section>
+
+    {# 🔥 Section Favoris AVEC BORDURE NOIRE #}
+    <section class="section-bordered mb-5">
+
+        <h2 class="mb-4 text-center fw-bold">🖤 Mes articles favoris</h2>
+
+        <div class="container py-4">
+
+            {% if favorites is empty %}
+                <p class="text-muted text-center">Vous n'avez encore ajouté aucun article en favori.</p>
+
+                <div class="text-center mt-3">
+                    <a href="{{ path('article_list') }}" class="btn btn-secondary">
+                        Voir les articles
+                    </a>
+                </div>
+
+            {% else %}
+
+                <div class="row">
+                    {% for article in favorites %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 shadow-sm bg-dark text-white border-0">
+
+                                {% if article.image %}
+                                    <img src="{{ asset('uploads/articles/' ~ article.image) }}"
+                                         class="card-img-top rounded-top"
+                                         style="height: 180px; object-fit: cover;">
+                                {% else %}
+                                    <img src="{{ asset('images/article-default.jpg') }}"
+                                         class="card-img-top rounded-top"
+                                         style="height: 180px; object-fit: cover;">
+                                {% endif %}
+
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold text-white">
+                                        {{ article.title }}
+                                    </h5>
+
+                                    <a href="{{ path('article_show', {'id': article.id}) }}"
+                                       class="btn btn-outline-light btn-sm mt-2">
+                                        Voir l'article
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+    <style>
+        .section-bordered {
+            border: 3px solid #000;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
+
+{% endblock %}

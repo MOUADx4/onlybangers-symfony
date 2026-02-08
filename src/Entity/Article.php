@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Entity\User;
 use App\Entity\Comment;
+use App\Entity\Rating;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -31,16 +32,26 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    /**
+     * @var Collection<int, Comment>
+     */
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, cascade: ['persist', 'remove'])]
     private Collection $comments;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    /**
+     * @var Collection<int, Rating>
+     */
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Rating::class, orphanRemoval: true)]
+    private Collection $ratings;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->comments = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
     }
 
     // -----------------------
@@ -137,6 +148,39 @@ class Article
     public function setImage(?string $image): static
     {
         $this->image = $image;
+        return $this;
+    }
+
+    // -----------------------
+    // Ratings
+    // -----------------------
+
+    /**
+     * @return Collection<int, Rating>
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): static
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings->add($rating);
+            $rating->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): static
+    {
+        if ($this->ratings->removeElement($rating)) {
+            if ($rating->getArticle() === $this) {
+                $rating->setArticle(null);
+            }
+        }
+
         return $this;
     }
 }

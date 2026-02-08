@@ -128,6 +128,7 @@ php bin/console server:run
 - /admin/articles/new
 - /admin/articles/edit/{id}
 - /articles_view
+- /favoris
 
 
 ---

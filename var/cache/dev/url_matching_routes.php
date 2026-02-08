@@ -14,6 +14,7 @@ return [
         '/admin' => [[['_route' => 'admin_dashboard', '_controller' => 'App\\Controller\\Admin\\DashboardController::index'], null, null, null, true, false, null]],
         '/articles' => [[['_route' => 'article_list', '_controller' => 'App\\Controller\\ArticleController::list'], null, null, null, false, false, null]],
         '/articles_view' => [[['_route' => 'articles_view', '_controller' => 'App\\Controller\\ArticlesViewController::index'], null, null, null, false, false, null]],
+        '/favoris' => [[['_route' => 'user_favorites', '_controller' => 'App\\Controller\\FavoriteController::favorites'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/_wdt/styles' => [[['_route' => '_wdt_stylesheet', '_controller' => 'web_profiler.controller.profiler::toolbarStylesheetAction'], null, null, null, false, false, null]],
         '/_profiler' => [[['_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'], null, null, null, true, false, null]],
@@ -37,23 +38,33 @@ return [
                         .')'
                         .'|comments/delete/([^/]++)(*:99)'
                     .')'
-                    .'|rticles/([^/]++)(*:123)'
+                    .'|rticles/([^/]++)(?'
+                        .'|/(?'
+                            .'|rate/([^/]++)(*:143)'
+                            .'|favorite(*:159)'
+                        .')'
+                        .'|(*:168)'
+                    .')'
+                .')'
+                .'|/comment/([^/]++)/(?'
+                    .'|like(*:203)'
+                    .'|reply(*:216)'
                 .')'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:163)'
-                    .'|wdt/([^/]++)(*:183)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:256)'
+                    .'|wdt/([^/]++)(*:276)'
                     .'|profiler/(?'
-                        .'|font/([^/\\.]++)\\.woff2(*:225)'
+                        .'|font/([^/\\.]++)\\.woff2(*:318)'
                         .'|([^/]++)(?'
                             .'|/(?'
-                                .'|search/results(*:262)'
-                                .'|router(*:276)'
+                                .'|search/results(*:355)'
+                                .'|router(*:369)'
                                 .'|exception(?'
-                                    .'|(*:296)'
-                                    .'|\\.css(*:309)'
+                                    .'|(*:389)'
+                                    .'|\\.css(*:402)'
                                 .')'
                             .')'
-                            .'|(*:319)'
+                            .'|(*:412)'
                         .')'
                     .')'
                 .')'
@@ -63,15 +74,19 @@ return [
         45 => [[['_route' => 'admin_articles_edit', '_controller' => 'App\\Controller\\Admin\\ArticleAdminController::edit'], ['id'], null, null, false, true, null]],
         67 => [[['_route' => 'admin_articles_delete', '_controller' => 'App\\Controller\\Admin\\ArticleAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         99 => [[['_route' => 'admin_comments_delete', '_controller' => 'App\\Controller\\Admin\\CommentAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        123 => [[['_route' => 'article_show', '_controller' => 'App\\Controller\\ArticleController::show'], ['id'], null, null, false, true, null]],
-        163 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        183 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        225 => [[['_route' => '_profiler_font', '_controller' => 'web_profiler.controller.profiler::fontAction'], ['fontName'], null, null, false, false, null]],
-        262 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        276 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        296 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        309 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        319 => [
+        143 => [[['_route' => 'article_rate', '_controller' => 'App\\Controller\\ArticleController::rate'], ['id', 'value'], null, null, false, true, null]],
+        159 => [[['_route' => 'article_favorite', '_controller' => 'App\\Controller\\ArticleController::favorite'], ['id'], null, null, false, false, null]],
+        168 => [[['_route' => 'article_show', '_controller' => 'App\\Controller\\ArticleController::show'], ['id'], null, null, false, true, null]],
+        203 => [[['_route' => 'comment_like', '_controller' => 'App\\Controller\\CommentController::like'], ['id'], null, null, false, false, null]],
+        216 => [[['_route' => 'comment_reply', '_controller' => 'App\\Controller\\CommentController::reply'], ['id'], null, null, false, false, null]],
+        256 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        276 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        318 => [[['_route' => '_profiler_font', '_controller' => 'web_profiler.controller.profiler::fontAction'], ['fontName'], null, null, false, false, null]],
+        355 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        369 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        389 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        402 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        412 => [
             [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

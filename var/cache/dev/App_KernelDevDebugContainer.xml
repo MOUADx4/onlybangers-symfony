@@ -490,6 +490,20 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ArticlesViewController"/>
       </call>
     </service>
+    <service id="App\Controller\CommentController" class="App\Controller\CommentController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\CommentController"/>
+      </call>
+    </service>
+    <service id="App\Controller\FavoriteController" class="App\Controller\FavoriteController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\FavoriteController"/>
+      </call>
+    </service>
     <service id="App\Controller\HomeController" class="App\Controller\HomeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -535,6 +549,10 @@
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
+    <service id="App\Entity\Rating" class="App\Entity\Rating" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
     <service id="App\Entity\User" class="App\Entity\User" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
@@ -553,6 +571,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\RatingRepository" class="App\Repository\RatingRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -602,7 +624,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.JaMaPa3"/>
+      <argument type="service" id=".service_locator.C9L34sk"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -3757,7 +3779,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.JaMaPa3"/>
+      <argument type="service" id=".service_locator.C9L34sk"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -5753,7 +5775,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.ZNUoWsp"/>
+      <argument type="service" id=".service_locator.Z7jaJbS"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -8193,6 +8215,12 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticlesViewController" class="App\Controller\ArticlesViewController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticlesViewController" class="App\Controller\ArticlesViewController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ArticlesViewController" class="App\Controller\ArticlesViewController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommentController" class="App\Controller\CommentController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommentController" class="App\Controller\CommentController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CommentController" class="App\Controller\CommentController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FavoriteController" class="App\Controller\FavoriteController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FavoriteController" class="App\Controller\FavoriteController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FavoriteController" class="App\Controller\FavoriteController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8216,6 +8244,8 @@
     <service id=".abstract.instanceof.App\Entity\Article" class="App\Entity\Article" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Comment.0.App\Entity\Comment" class="App\Entity\Comment" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Comment" class="App\Entity\Comment" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Rating.0.App\Entity\Rating" class="App\Entity\Rating" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Rating" class="App\Entity\Rating" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\User.0.App\Entity\User" class="App\Entity\User" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\User" class="App\Entity\User" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ArticleType" class="App\Form\ArticleType" autowire="true" abstract="true"/>
@@ -8228,6 +8258,8 @@
     <service id=".abstract.instanceof.App\Repository\ArticleRepository" class="App\Repository\ArticleRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RatingRepository" class="App\Repository\RatingRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\RatingRepository" class="App\Repository\RatingRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.ryAvHi4" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8860,6 +8892,25 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.9b.wWNZ" method="withContext"/>
     </service>
+    <service id=".service_locator.V05Esnz" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="article" type="service_closure" id=".errored..service_locator.V05Esnz.App\Entity\Article"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.V05Esnz.App\Controller\ArticleController::rate()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ArticleController::rate()"/>
+      <argument>App\Controller\ArticleController::rate()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.V05Esnz" method="withContext"/>
+    </service>
+    <service id=".service_locator.V05Esnz.App\Controller\ArticleController::favorite()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ArticleController::favorite()"/>
+      <argument>App\Controller\ArticleController::favorite()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.V05Esnz" method="withContext"/>
+    </service>
     <service id=".service_locator.rr3BW8T" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8892,11 +8943,37 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KL2mrpd" method="withContext"/>
     </service>
-    <service id=".service_locator.KL2mrpd.App\Controller\HomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.GwrY44y" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="comment" type="service_closure" id=".errored..service_locator.GwrY44y.App\Entity\Comment"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.GwrY44y.App\Controller\CommentController::like()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CommentController::like()"/>
+      <argument>App\Controller\CommentController::like()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GwrY44y" method="withContext"/>
+    </service>
+    <service id=".service_locator.C7e.tLA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="parent" type="service_closure" id=".errored..service_locator.C7e.tLA.App\Entity\Comment"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.C7e.tLA.App\Controller\CommentController::reply()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CommentController::reply()"/>
+      <argument>App\Controller\CommentController::reply()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.C7e.tLA" method="withContext"/>
+    </service>
+    <service id=".service_locator.rr3BW8T.App\Controller\HomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomeController::index()"/>
       <argument>App\Controller\HomeController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.KL2mrpd" method="withContext"/>
+      <factory service=".service_locator.rr3BW8T" method="withContext"/>
     </service>
     <service id=".service_locator.vOo7mW7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -8936,7 +9013,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.0MQaTBY" method="withContext"/>
     </service>
-    <service id=".service_locator.JaMaPa3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.C9L34sk" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
@@ -8949,10 +9026,14 @@
         <argument key="App\Controller\Admin\ArticleAdminController::delete" type="service_closure" id=".service_locator.aUekZYp.App\Controller\Admin\ArticleAdminController::delete()"/>
         <argument key="App\Controller\Admin\CommentAdminController::list" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\Admin\CommentAdminController::list()"/>
         <argument key="App\Controller\Admin\CommentAdminController::delete" type="service_closure" id=".service_locator.9b.wWNZ.App\Controller\Admin\CommentAdminController::delete()"/>
+        <argument key="App\Controller\ArticleController::rate" type="service_closure" id=".service_locator.V05Esnz.App\Controller\ArticleController::rate()"/>
+        <argument key="App\Controller\ArticleController::favorite" type="service_closure" id=".service_locator.V05Esnz.App\Controller\ArticleController::favorite()"/>
         <argument key="App\Controller\ArticleController::list" type="service_closure" id=".service_locator.rr3BW8T.App\Controller\ArticleController::list()"/>
         <argument key="App\Controller\ArticleController::show" type="service_closure" id=".service_locator.OhhwhSf.App\Controller\ArticleController::show()"/>
         <argument key="App\Controller\ArticlesViewController::index" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\ArticlesViewController::index()"/>
-        <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\HomeController::index()"/>
+        <argument key="App\Controller\CommentController::like" type="service_closure" id=".service_locator.GwrY44y.App\Controller\CommentController::like()"/>
+        <argument key="App\Controller\CommentController::reply" type="service_closure" id=".service_locator.C7e.tLA.App\Controller\CommentController::reply()"/>
+        <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.rr3BW8T.App\Controller\HomeController::index()"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.vOo7mW7.App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\RegistrationController::verifyUserEmail" type="service_closure" id=".service_locator.51hHbbT.App\Controller\RegistrationController::verifyUserEmail()"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
@@ -8964,10 +9045,14 @@
         <argument key="App\Controller\Admin\ArticleAdminController:delete" type="service_closure" id=".service_locator.aUekZYp.App\Controller\Admin\ArticleAdminController::delete()"/>
         <argument key="App\Controller\Admin\CommentAdminController:list" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\Admin\CommentAdminController::list()"/>
         <argument key="App\Controller\Admin\CommentAdminController:delete" type="service_closure" id=".service_locator.9b.wWNZ.App\Controller\Admin\CommentAdminController::delete()"/>
+        <argument key="App\Controller\ArticleController:rate" type="service_closure" id=".service_locator.V05Esnz.App\Controller\ArticleController::rate()"/>
+        <argument key="App\Controller\ArticleController:favorite" type="service_closure" id=".service_locator.V05Esnz.App\Controller\ArticleController::favorite()"/>
         <argument key="App\Controller\ArticleController:list" type="service_closure" id=".service_locator.rr3BW8T.App\Controller\ArticleController::list()"/>
         <argument key="App\Controller\ArticleController:show" type="service_closure" id=".service_locator.OhhwhSf.App\Controller\ArticleController::show()"/>
         <argument key="App\Controller\ArticlesViewController:index" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\ArticlesViewController::index()"/>
-        <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.KL2mrpd.App\Controller\HomeController::index()"/>
+        <argument key="App\Controller\CommentController:like" type="service_closure" id=".service_locator.GwrY44y.App\Controller\CommentController::like()"/>
+        <argument key="App\Controller\CommentController:reply" type="service_closure" id=".service_locator.C7e.tLA.App\Controller\CommentController::reply()"/>
+        <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.rr3BW8T.App\Controller\HomeController::index()"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.vOo7mW7.App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\RegistrationController:verifyUserEmail" type="service_closure" id=".service_locator.51hHbbT.App\Controller\RegistrationController::verifyUserEmail()"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
@@ -9310,11 +9395,12 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.ZNUoWsp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Z7jaJbS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ArticleRepository" type="service_closure" id="App\Repository\ArticleRepository"/>
         <argument key="App\Repository\CommentRepository" type="service_closure" id="App\Repository\CommentRepository"/>
+        <argument key="App\Repository\RatingRepository" type="service_closure" id="App\Repository\RatingRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -9614,6 +9700,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\CommentController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CommentController"/>
+      <argument>App\Controller\CommentController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\FavoriteController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\FavoriteController"/>
+      <argument>App\Controller\FavoriteController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
       <argument>App\Controller\HomeController</argument>
@@ -9842,6 +9940,8 @@
           <argument>App\Controller\Admin\DashboardController</argument>
           <argument>App\Controller\ArticleController</argument>
           <argument>App\Controller\ArticlesViewController</argument>
+          <argument>App\Controller\CommentController</argument>
+          <argument>App\Controller\FavoriteController</argument>
           <argument>App\Controller\HomeController</argument>
           <argument>App\Controller\RegistrationController</argument>
           <argument>App\Controller\SecurityController</argument>
@@ -10083,8 +10183,17 @@
     <service id=".errored..service_locator.9b.wWNZ.App\Entity\Comment" class="App\Entity\Comment">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.9b.wWNZ&quot;: it needs an instance of &quot;App\Entity\Comment&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
+    <service id=".errored..service_locator.V05Esnz.App\Entity\Article" class="App\Entity\Article">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.V05Esnz&quot;: it needs an instance of &quot;App\Entity\Article&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
     <service id=".errored..service_locator.OhhwhSf.App\Entity\Article" class="App\Entity\Article">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.OhhwhSf&quot;: it needs an instance of &quot;App\Entity\Article&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.GwrY44y.App\Entity\Comment" class="App\Entity\Comment">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.GwrY44y&quot;: it needs an instance of &quot;App\Entity\Comment&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.C7e.tLA.App\Entity\Comment" class="App\Entity\Comment">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.C7e.tLA&quot;: it needs an instance of &quot;App\Entity\Comment&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
     <service id=".App\Command\CreateAdminCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>app:create-admin</argument>
@@ -11344,7 +11453,7 @@
     <service id="doctrine.fixtures.provider" alias="doctrine.fixtures.loader"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.JaMaPa3"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.C9L34sk"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request.logger" alias="monolog.logger.request"/>
@@ -11406,8 +11515,11 @@
     <service id=".service_locator.RUdlJZf" alias=".service_locator.KL2mrpd"/>
     <service id=".service_locator.S55_zUG" alias=".service_locator.aUekZYp"/>
     <service id=".service_locator.LqG7YW9" alias=".service_locator.9b.wWNZ"/>
+    <service id=".service_locator.nZrciMq" alias=".service_locator.V05Esnz"/>
     <service id=".service_locator.26qd2bB" alias=".service_locator.rr3BW8T"/>
     <service id=".service_locator.OfH5ZZ4" alias=".service_locator.OhhwhSf"/>
+    <service id=".service_locator.caYVMw9" alias=".service_locator.GwrY44y"/>
+    <service id=".service_locator.wcgMXG7" alias=".service_locator.C7e.tLA"/>
     <service id=".service_locator.fSGXMa." alias=".service_locator.vOo7mW7"/>
     <service id=".service_locator.KAXZnki" alias=".service_locator.51hHbbT"/>
     <service id=".service_locator.uBwBrvQ" alias=".service_locator.0MQaTBY"/>

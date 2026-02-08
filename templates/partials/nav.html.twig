@@ -1,27 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
+
         <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ path('home') }}">
-    <img src="{{ asset('images/logo.png') }}" alt="OnlyBangers" style="height:40px; margin-right:10px;">
-    OnlyBangers
-</a>
+            <img src="{{ asset('images/main_logo.png') }}" alt="OnlyBangers" style="height:40px; margin-right:10px;">
+            OnlyBangers
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                
+
                 {# Accueil #}
                 <li class="nav-item">
-                    <a class="nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}" 
-                       href="{{ path('home') }}">Accueil</a>
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}"
+                       href="{{ path('home') }}">
+                        Accueil
+                    </a>
                 </li>
 
                 {# Articles #}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('articles_view') }}">Articles</a>
+                    <a class="nav-link {% if app.request.attributes.get('_route') == 'articles_view' %}active{% endif %}"
+                       href="{{ path('articles_view') }}">
+                        Articles
+                    </a>
                 </li>
 
+                {# Favoris #}
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'user_favorites' %}active{% endif %}"
+                           href="{{ path('user_favorites') }}">
+                            Favoris
+                        </a>
+                    </li>
+                {% endif %}
 
                 {# Connexion / Déconnexion #}
                 {% if app.user %}
@@ -30,24 +46,34 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" 
-                           href="{{ path('app_login') }}">Connexion</a>
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}"
+                           href="{{ path('app_login') }}">
+                            Connexion
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}" 
-                           href="{{ path('app_register') }}">Inscription</a>
+                        <a class="nav-link {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}"
+                           href="{{ path('app_register') }}">
+                            Inscription
+                        </a>
                     </li>
                 {% endif %}
 
-                {# Liens admin uniquement #}
+                {# Admin #}
                 {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold {% if app.request.attributes.get('_route') starts with 'admin_' %}active{% endif %}" 
-                           href="{{ path('admin_dashboard') }}">Admin</a>
+                        <a class="nav-link text-warning fw-bold {% if app.request.attributes.get('_route') starts with 'admin_' %}active{% endif %}"
+                           href="{{ path('admin_dashboard') }}">
+                            Admin
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold {% if app.request.attributes.get('_route') == 'admin_comments_list' %}active{% endif %}" 
-                           href="{{ path('admin_comments_list') }}">Commentaires</a>
+                        <a class="nav-link text-warning fw-bold {% if app.request.attributes.get('_route') == 'admin_comments_list' %}active{% endif %}"
+                           href="{{ path('admin_comments_list') }}">
+                            Commentaires
+                        </a>
                     </li>
                 {% endif %}
 

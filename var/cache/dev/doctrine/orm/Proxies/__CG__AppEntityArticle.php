@@ -28,6 +28,7 @@ class Article extends \App\Entity\Article implements \Doctrine\ORM\Proxy\Interna
         "\0".parent::class."\0".'createdAt' => [parent::class, 'createdAt', null, 16],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null, 16],
         "\0".parent::class."\0".'image' => [parent::class, 'image', null, 16],
+        "\0".parent::class."\0".'ratings' => [parent::class, 'ratings', null, 16],
         "\0".parent::class."\0".'title' => [parent::class, 'title', null, 16],
         'author' => [parent::class, 'author', null, 16],
         'comments' => [parent::class, 'comments', null, 16],
@@ -35,6 +36,7 @@ class Article extends \App\Entity\Article implements \Doctrine\ORM\Proxy\Interna
         'createdAt' => [parent::class, 'createdAt', null, 16],
         'id' => [parent::class, 'id', null, 16],
         'image' => [parent::class, 'image', null, 16],
+        'ratings' => [parent::class, 'ratings', null, 16],
         'title' => [parent::class, 'title', null, 16],
     ];
 

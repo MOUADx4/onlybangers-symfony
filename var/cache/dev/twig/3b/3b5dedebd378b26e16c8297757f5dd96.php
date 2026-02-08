@@ -61,7 +61,7 @@ class __TwigTemplate_2162067aeaec44ed04b5fa4cf3602d0d extends Template
         ";
         // line 8
         yield "        <link rel=\"icon\" type=\"image/png\" href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/main_logo.png"), "html", null, true);
         yield "\">
 
         ";
@@ -131,6 +131,31 @@ class __TwigTemplate_2162067aeaec44ed04b5fa4cf3602d0d extends Template
         // line 42
         yield "    </body>
 </html>
+<style>
+.nav-link {
+    color: #bbb !important;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+
+.nav-link.active.btn-nav {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+</style>
 ";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -259,7 +284,7 @@ class __TwigTemplate_2162067aeaec44ed04b5fa4cf3602d0d extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  229 => 39,  216 => 38,  194 => 32,  181 => 11,  168 => 10,  145 => 5,  132 => 42,  130 => 38,  127 => 37,  124 => 36,  120 => 33,  118 => 32,  115 => 31,  109 => 30,  99 => 26,  94 => 25,  89 => 24,  84 => 23,  79 => 19,  76 => 18,  71 => 14,  69 => 10,  63 => 8,  58 => 5,  52 => 1,);
+        return array (  254 => 39,  241 => 38,  219 => 32,  206 => 11,  193 => 10,  170 => 5,  132 => 42,  130 => 38,  127 => 37,  124 => 36,  120 => 33,  118 => 32,  115 => 31,  109 => 30,  99 => 26,  94 => 25,  89 => 24,  84 => 23,  79 => 19,  76 => 18,  71 => 14,  69 => 10,  63 => 8,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -271,7 +296,7 @@ class __TwigTemplate_2162067aeaec44ed04b5fa4cf3602d0d extends Template
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {# Favicon avec ton logo.png #}
-        <link rel=\"icon\" type=\"image/png\" href=\"{{ asset('images/logo.png') }}\">
+        <link rel=\"icon\" type=\"image/png\" href=\"{{ asset('images/main_logo.png') }}\">
 
         {% block stylesheets %}
         <!-- Bootstrap CSS -->
@@ -307,6 +332,31 @@ class __TwigTemplate_2162067aeaec44ed04b5fa4cf3602d0d extends Template
         {% endblock %}
     </body>
 </html>
+<style>
+.nav-link {
+    color: #bbb !important;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+
+.nav-link.active.btn-nav {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+</style>
 ", "base.html.twig", "/Users/mouad/Documents/OnlyBangers/onlybangers-symfony/templates/base.html.twig");
     }
 }

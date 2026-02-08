@@ -47,85 +47,77 @@ class __TwigTemplate_f402ebf15da98846e7511582d25d0dfb extends Template
         // line 1
         yield "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
     <div class=\"container\">
+
         <a class=\"navbar-brand fw-bold d-flex align-items-center\" href=\"";
-        // line 3
+        // line 4
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         yield "\">
-    <img src=\"";
-        // line 4
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
+            <img src=\"";
+        // line 5
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/main_logo.png"), "html", null, true);
         yield "\" alt=\"OnlyBangers\" style=\"height:40px; margin-right:10px;\">
-    OnlyBangers
-</a>
+            OnlyBangers
+        </a>
 
         <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\">
             <span class=\"navbar-toggler-icon\"></span>
         </button>
+
         <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
             <ul class=\"navbar-nav ms-auto\">
-                
+
                 ";
-        // line 15
+        // line 17
         yield "                <li class=\"nav-item\">
                     <a class=\"nav-link ";
-        // line 16
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "request", [], "any", false, false, false, 16), "attributes", [], "any", false, false, false, 16), "get", ["_route"], "method", false, false, false, 16) == "home")) {
+        // line 18
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "request", [], "any", false, false, false, 18), "attributes", [], "any", false, false, false, 18), "get", ["_route"], "method", false, false, false, 18) == "home")) {
             yield "active";
         }
-        yield "\" 
+        yield "\"
                        href=\"";
-        // line 17
+        // line 19
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
-        yield "\">Accueil</a>
+        yield "\">
+                        Accueil
+                    </a>
                 </li>
 
                 ";
-        // line 21
+        // line 25
         yield "                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"";
-        // line 22
+                    <a class=\"nav-link ";
+        // line 26
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "request", [], "any", false, false, false, 26), "attributes", [], "any", false, false, false, 26), "get", ["_route"], "method", false, false, false, 26) == "articles_view")) {
+            yield "active";
+        }
+        yield "\"
+                       href=\"";
+        // line 27
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("articles_view");
-        yield "\">Articles</a>
+        yield "\">
+                        Articles
+                    </a>
                 </li>
 
-
                 ";
-        // line 27
+        // line 33
         yield "                ";
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "user", [], "any", false, false, false, 27)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 28
-            yield "                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"";
-            // line 29
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            yield "\">Se déconnecter</a>
-                    </li>
-                ";
-        } else {
-            // line 32
-            yield "                    <li class=\"nav-item\">
-                        <a class=\"nav-link ";
-            // line 33
-            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "request", [], "any", false, false, false, 33), "attributes", [], "any", false, false, false, 33), "get", ["_route"], "method", false, false, false, 33) == "app_login")) {
-                yield "active";
-            }
-            yield "\" 
-                           href=\"";
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 34
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-            yield "\">Connexion</a>
-                    </li>
-                    <li class=\"nav-item\">
+            yield "                    <li class=\"nav-item\">
                         <a class=\"nav-link ";
-            // line 37
-            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 37, $this->source); })()), "request", [], "any", false, false, false, 37), "attributes", [], "any", false, false, false, 37), "get", ["_route"], "method", false, false, false, 37) == "app_register")) {
+            // line 35
+            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "request", [], "any", false, false, false, 35), "attributes", [], "any", false, false, false, 35), "get", ["_route"], "method", false, false, false, 35) == "user_favorites")) {
                 yield "active";
             }
-            yield "\" 
+            yield "\"
                            href=\"";
-            // line 38
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-            yield "\">Inscription</a>
+            // line 36
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_favorites");
+            yield "\">
+                            Favoris
+                        </a>
                     </li>
                 ";
         }
@@ -134,35 +126,87 @@ class __TwigTemplate_f402ebf15da98846e7511582d25d0dfb extends Template
                 ";
         // line 43
         yield "                ";
-        if ((($tmp = $this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 43, $this->source); })()), "user", [], "any", false, false, false, 43)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 44
             yield "                    <li class=\"nav-item\">
-                        <a class=\"nav-link text-warning fw-bold ";
+                        <a class=\"nav-link\" href=\"";
             // line 45
-            if ((is_string($_v0 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "request", [], "any", false, false, false, 45), "attributes", [], "any", false, false, false, 45), "get", ["_route"], "method", false, false, false, 45)) && is_string($_v1 = "admin_") && str_starts_with($_v0, $_v1))) {
-                yield "active";
-            }
-            yield "\" 
-                           href=\"";
-            // line 46
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_dashboard");
-            yield "\">Admin</a>
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            yield "\">Se déconnecter</a>
                     </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link text-warning fw-bold ";
+                ";
+        } else {
+            // line 48
+            yield "                    <li class=\"nav-item\">
+                        <a class=\"nav-link ";
             // line 49
-            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 49, $this->source); })()), "request", [], "any", false, false, false, 49), "attributes", [], "any", false, false, false, 49), "get", ["_route"], "method", false, false, false, 49) == "admin_comments_list")) {
+            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 49, $this->source); })()), "request", [], "any", false, false, false, 49), "attributes", [], "any", false, false, false, 49), "get", ["_route"], "method", false, false, false, 49) == "app_login")) {
                 yield "active";
             }
-            yield "\" 
+            yield "\"
                            href=\"";
             // line 50
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_comments_list");
-            yield "\">Commentaires</a>
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            yield "\">
+                            Connexion
+                        </a>
+                    </li>
+
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link ";
+            // line 56
+            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 56, $this->source); })()), "request", [], "any", false, false, false, 56), "attributes", [], "any", false, false, false, 56), "get", ["_route"], "method", false, false, false, 56) == "app_register")) {
+                yield "active";
+            }
+            yield "\"
+                           href=\"";
+            // line 57
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+            yield "\">
+                            Inscription
+                        </a>
                     </li>
                 ";
         }
-        // line 53
+        // line 62
+        yield "
+                ";
+        // line 64
+        yield "                ";
+        if ((($tmp = $this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 65
+            yield "                    <li class=\"nav-item\">
+                        <a class=\"nav-link text-warning fw-bold ";
+            // line 66
+            if ((is_string($_v0 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 66, $this->source); })()), "request", [], "any", false, false, false, 66), "attributes", [], "any", false, false, false, 66), "get", ["_route"], "method", false, false, false, 66)) && is_string($_v1 = "admin_") && str_starts_with($_v0, $_v1))) {
+                yield "active";
+            }
+            yield "\"
+                           href=\"";
+            // line 67
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_dashboard");
+            yield "\">
+                            Admin
+                        </a>
+                    </li>
+
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link text-warning fw-bold ";
+            // line 73
+            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 73, $this->source); })()), "request", [], "any", false, false, false, 73), "attributes", [], "any", false, false, false, 73), "get", ["_route"], "method", false, false, false, 73) == "admin_comments_list")) {
+                yield "active";
+            }
+            yield "\"
+                           href=\"";
+            // line 74
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_comments_list");
+            yield "\">
+                            Commentaires
+                        </a>
+                    </li>
+                ";
+        }
+        // line 79
         yield "
             </ul>
         </div>
@@ -199,35 +243,51 @@ class __TwigTemplate_f402ebf15da98846e7511582d25d0dfb extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  166 => 53,  160 => 50,  154 => 49,  148 => 46,  142 => 45,  139 => 44,  136 => 43,  133 => 41,  127 => 38,  121 => 37,  115 => 34,  109 => 33,  106 => 32,  100 => 29,  97 => 28,  94 => 27,  87 => 22,  84 => 21,  78 => 17,  72 => 16,  69 => 15,  56 => 4,  52 => 3,  48 => 1,);
+        return array (  210 => 79,  202 => 74,  196 => 73,  187 => 67,  181 => 66,  178 => 65,  175 => 64,  172 => 62,  164 => 57,  158 => 56,  149 => 50,  143 => 49,  140 => 48,  134 => 45,  131 => 44,  128 => 43,  125 => 41,  117 => 36,  111 => 35,  108 => 34,  105 => 33,  97 => 27,  91 => 26,  88 => 25,  80 => 19,  74 => 18,  71 => 17,  57 => 5,  53 => 4,  48 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
     <div class=\"container\">
+
         <a class=\"navbar-brand fw-bold d-flex align-items-center\" href=\"{{ path('home') }}\">
-    <img src=\"{{ asset('images/logo.png') }}\" alt=\"OnlyBangers\" style=\"height:40px; margin-right:10px;\">
-    OnlyBangers
-</a>
+            <img src=\"{{ asset('images/main_logo.png') }}\" alt=\"OnlyBangers\" style=\"height:40px; margin-right:10px;\">
+            OnlyBangers
+        </a>
 
         <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\">
             <span class=\"navbar-toggler-icon\"></span>
         </button>
+
         <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
             <ul class=\"navbar-nav ms-auto\">
-                
+
                 {# Accueil #}
                 <li class=\"nav-item\">
-                    <a class=\"nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}\" 
-                       href=\"{{ path('home') }}\">Accueil</a>
+                    <a class=\"nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}\"
+                       href=\"{{ path('home') }}\">
+                        Accueil
+                    </a>
                 </li>
 
                 {# Articles #}
                 <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"{{ path('articles_view') }}\">Articles</a>
+                    <a class=\"nav-link {% if app.request.attributes.get('_route') == 'articles_view' %}active{% endif %}\"
+                       href=\"{{ path('articles_view') }}\">
+                        Articles
+                    </a>
                 </li>
 
+                {# Favoris #}
+                {% if app.user %}
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link {% if app.request.attributes.get('_route') == 'user_favorites' %}active{% endif %}\"
+                           href=\"{{ path('user_favorites') }}\">
+                            Favoris
+                        </a>
+                    </li>
+                {% endif %}
 
                 {# Connexion / Déconnexion #}
                 {% if app.user %}
@@ -236,24 +296,34 @@ class __TwigTemplate_f402ebf15da98846e7511582d25d0dfb extends Template
                     </li>
                 {% else %}
                     <li class=\"nav-item\">
-                        <a class=\"nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}\" 
-                           href=\"{{ path('app_login') }}\">Connexion</a>
+                        <a class=\"nav-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}\"
+                           href=\"{{ path('app_login') }}\">
+                            Connexion
+                        </a>
                     </li>
+
                     <li class=\"nav-item\">
-                        <a class=\"nav-link {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}\" 
-                           href=\"{{ path('app_register') }}\">Inscription</a>
+                        <a class=\"nav-link {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}\"
+                           href=\"{{ path('app_register') }}\">
+                            Inscription
+                        </a>
                     </li>
                 {% endif %}
 
-                {# Liens admin uniquement #}
+                {# Admin #}
                 {% if is_granted('ROLE_ADMIN') %}
                     <li class=\"nav-item\">
-                        <a class=\"nav-link text-warning fw-bold {% if app.request.attributes.get('_route') starts with 'admin_' %}active{% endif %}\" 
-                           href=\"{{ path('admin_dashboard') }}\">Admin</a>
+                        <a class=\"nav-link text-warning fw-bold {% if app.request.attributes.get('_route') starts with 'admin_' %}active{% endif %}\"
+                           href=\"{{ path('admin_dashboard') }}\">
+                            Admin
+                        </a>
                     </li>
+
                     <li class=\"nav-item\">
-                        <a class=\"nav-link text-warning fw-bold {% if app.request.attributes.get('_route') == 'admin_comments_list' %}active{% endif %}\" 
-                           href=\"{{ path('admin_comments_list') }}\">Commentaires</a>
+                        <a class=\"nav-link text-warning fw-bold {% if app.request.attributes.get('_route') == 'admin_comments_list' %}active{% endif %}\"
+                           href=\"{{ path('admin_comments_list') }}\">
+                            Commentaires
+                        </a>
                     </li>
                 {% endif %}
 
