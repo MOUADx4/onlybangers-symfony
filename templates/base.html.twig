@@ -5,7 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {# Favicon avec ton logo.png #}
-        <link rel="icon" type="image/png" href="{{ asset('images/main_logo.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('images/logo_OB.png') }}">
 
         {% block stylesheets %}
         <!-- Bootstrap CSS -->
@@ -64,21 +64,6 @@
     color: #000 !important;
     border-radius: 6px;
     padding: 6px 12px;
-}
-.table-hover tbody tr:hover {
-    cursor: default;
-    pointer-events: auto;
-}
-
-.table-hover tbody tr td {
-    position: relative;
-    z-index: 2;
-}
-
-.table-hover tbody tr td button,
-.table-hover tbody tr td form {
-    position: relative;
-    z-index: 3;
 }
 
 </style>
