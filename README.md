@@ -170,6 +170,32 @@ php bin/console server:run
 
 ---
 
+## 🗄 Appliquer les migrations
+
+Avant de lancer le projet, il faut créer la structure de la base de données avec Doctrine :
+
+```bash
+php bin/console doctrine:migrations:migrate
+```
+
+Cette commande permet de générer automatiquement les tables nécessaires (User, Article, Commentaire, etc).
+
+---
+
+## 🧪 Charger les données de test (Fixtures)
+
+Le projet contient des fixtures afin de fournir des données d’exemple (utilisateurs, articles, commentaires).
+
+Pour charger la base de test :
+
+```bash
+php bin/console doctrine:fixtures:load
+```
+
+⚠️ Attention : cette commande supprime les données existantes avant d’insérer les données de démonstration.
+
+---
+
 ## 👤 Comptes de test
 
 ### Administrateur
